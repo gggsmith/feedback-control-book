@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+  notebook:
+    image: jupyter/scipy-notebook:016833b15ceb
+    ports:
+      - 8888:8888
+    command: start-notebook.sh --NotebookApp.token="" --NotebookApp.notebook_dir=/home/jovyan/work --NotebookApp.allow_root=True
+    user: root
+    volumes:
+      - ./:/home/jovyan/work
+
+    environment:
+      GRANT_SUDO: "yes"
+      JUPYTER_ENABLE_LAB: "yes"
